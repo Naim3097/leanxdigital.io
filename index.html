@@ -194,8 +194,10 @@
     display:flex;align-items:center;gap:.5em;background:rgba(4,19,32,.4);backdrop-filter:blur(6px)}
   .badge .dot{width:6px;height:6px;border-radius:50%;background:var(--amber);box-shadow:0 0 10px var(--amber)}
 
+  .mid{position:relative;z-index:2;flex:1 1 auto;display:flex;flex-direction:column;min-height:0}
   .main{position:relative;z-index:2;flex:1 1 auto;display:flex;align-items:center;min-height:0}
   .intro{max-width:min(520px,46vw)}
+  .d-only{display:inline}
 
   .eyebrow{display:inline-flex;align-items:center;gap:.6em;font-family:'Space Grotesk';font-size:.78rem;
     text-transform:uppercase;letter-spacing:.28em;color:var(--amber);margin-bottom:clamp(14px,2.2vh,24px)}
@@ -251,35 +253,50 @@
   @keyframes waPulse{0%{transform:scale(.82);opacity:.55}100%{transform:scale(1.28);opacity:0}}
   @media (prefers-reduced-motion:reduce){.wa .bubble::after,.stars2{animation:none}}
 
-  /* ---------- tablet / mobile: clean vertical stack ---------- */
+  /* ---------- tablet / mobile: one-screen poster, no scroll ---------- */
   @media (max-width:900px){
-    body{overflow-x:hidden;overflow-y:auto;height:auto;min-height:100vh}
+    html,body{height:100vh;height:100dvh;overflow:hidden}
     .earth,.vignette{display:none}
-    body::after{content:"";position:absolute;left:0;right:0;bottom:0;height:210px;z-index:0;pointer-events:none;
-      background:radial-gradient(130% 90% at 50% 150%, rgba(100,194,238,.30), transparent 72%)}
-    .shell{height:auto;min-height:100vh;min-height:100dvh;padding:20px 22px 30px}
+    body::after{content:"";position:absolute;left:0;right:0;bottom:0;height:34vh;z-index:0;pointer-events:none;
+      background:radial-gradient(135% 96% at 50% 152%, rgba(100,194,238,.34), transparent 70%)}
+    .shell{height:100vh;height:100dvh;padding:clamp(14px,2.4vh,20px) 22px clamp(14px,2.4vh,20px)}
     .top{align-items:center}
-    .brand{font-size:1.3rem}
+    .brand{font-size:1.28rem}
     .badge{font-size:.66rem;white-space:nowrap}
-    .hero-x{position:static;display:block;right:auto;bottom:auto;transform:none;opacity:1;
-      width:min(84%,340px);height:auto;margin:14px auto 2px;
-      filter:drop-shadow(0 22px 30px rgba(0,0,0,.55))}
-    .main{display:block;flex:0 0 auto;padding:0}
-    .intro{max-width:100%}
-    .eyebrow{margin-bottom:12px}
-    h1{font-size:clamp(2.1rem,8.5vw,3rem)}
-    .lede{max-width:100%;font-size:1rem}
-    .cta-row{margin-bottom:22px}
+    .mid{justify-content:center;gap:clamp(8px,2.2vh,20px)}
+    .hero-x{position:static;display:block;right:auto;bottom:auto;transform:none;opacity:1;align-self:center;
+      width:min(70%,286px);height:auto;margin:0 auto;
+      filter:drop-shadow(0 20px 28px rgba(0,0,0,.55))}
+    .main{flex:0 0 auto;display:block;align-items:stretch}
+    .intro{max-width:100%;text-align:center}
+    .d-only{display:none}
+    .eyebrow{margin-bottom:10px}
+    .eyebrow::before{display:none}
+    h1{font-size:clamp(2rem,8vw,2.7rem);margin-bottom:clamp(8px,1.4vh,14px)}
+    .lede{max-width:34ch;margin-left:auto;margin-right:auto;font-size:.96rem;margin-bottom:clamp(14px,2.2vh,20px)}
+    .cta-row{justify-content:center;margin-bottom:clamp(12px,1.8vh,18px)}
     .btn.primary{width:100%;justify-content:center}
-    .foot{margin-top:auto;padding-bottom:74px;justify-content:flex-start}
-    .foot .items{gap:12px 18px}
-    .wa{right:16px;bottom:16px}
+    .engine{justify-content:center;font-size:.84rem}
+    .foot{flex:0 0 auto;margin-top:0;padding-bottom:0;justify-content:center}
+    .foot .items{flex-direction:column;align-items:center;gap:6px}
+    .foot .item{font-size:.72rem}
+    .wa{right:14px;bottom:14px}
+    .wa .bubble{width:52px;height:52px}
+    .wa .bubble svg{width:26px;height:26px}
     .wa .label{display:none}
   }
 
   @media (max-width:360px){
     .badge{display:none}
-    h1{font-size:2rem}
+    h1{font-size:1.85rem}
+    .hero-x{width:64%}
+    .foot .item{font-size:.72rem}
+  }
+
+  /* short landscape phones: keep it inside the viewport */
+  @media (max-height:560px) and (max-width:900px){
+    .hero-x{width:min(38vh,220px)}
+    .lede{display:none}
   }
 </style>
 </head>
@@ -296,13 +313,13 @@
       <div class="badge"><span class="dot"></span>Digital Marketing Agency</div>
     </header>
 
-    <img class="hero-x" src="assets/hero-x.png" alt="The lean.x digital crew — four astronauts around the brand X" />
-
-    <main class="main">
-      <div class="intro">
+    <div class="mid">
+      <img class="hero-x" src="assets/hero-x.png" alt="The lean.x digital crew — four astronauts around the brand X" />
+      <main class="main">
+        <div class="intro">
         <p class="eyebrow">Get to know us</p>
         <h1>We turn traffic<br>into <span class="accent">sales.</span></h1>
-        <p class="lede">Most agencies stop at attention. We build the part that actually pays — the engine that turns clicks into <b>booked, paying customers.</b> See exactly how we do it inside our company profile.</p>
+        <p class="lede"><span class="d-only">Most agencies stop at attention. </span>We build the part that actually pays — the engine that turns clicks into <b>booked, paying customers.</b><span class="d-only"> See exactly how we do it inside our company profile.</span></p>
 
         <div class="cta-row">
           <a class="btn primary" href="LEANX-DIGITAL-Company-Profile.pdf" download>
@@ -318,7 +335,8 @@
           <span class="tail">— One Seamless Engine</span>
         </p>
       </div>
-    </main>
+      </main>
+    </div>
 
     <footer class="foot">
       <div class="items">
