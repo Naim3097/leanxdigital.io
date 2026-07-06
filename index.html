@@ -179,14 +179,14 @@
     background:radial-gradient(125% 100% at 50% 42%, transparent 56%, rgba(2,8,16,.55));}
 
   /* ---------- crew on the X ---------- */
-  .hero-x{position:fixed;z-index:3;right:-2vw;bottom:18.5vh;height:min(68vh,41vw);width:auto;
+  .hero-x{position:fixed;z-index:1;right:-2vw;bottom:18.5vh;height:min(68vh,41vw);width:auto;
     pointer-events:none;filter:drop-shadow(0 34px 42px rgba(0,0,0,.5));}
 
   /* ---------- foreground content ---------- */
   .shell{position:relative;z-index:4;height:100%;max-width:1280px;margin:0 auto;
     padding:clamp(22px,3.2vh,40px) clamp(28px,5vw,72px);display:flex;flex-direction:column}
 
-  .top{display:flex;align-items:flex-start;justify-content:space-between;flex:0 0 auto}
+  .top{position:relative;z-index:2;display:flex;align-items:flex-start;justify-content:space-between;flex:0 0 auto}
   .brand{font-family:'Space Grotesk';font-weight:700;font-size:1.5rem;line-height:.96;letter-spacing:-.02em;color:#fff}
   .brand .x{color:var(--amber)}
   .brand .digital{display:block}
@@ -194,7 +194,7 @@
     display:flex;align-items:center;gap:.5em;background:rgba(4,19,32,.4);backdrop-filter:blur(6px)}
   .badge .dot{width:6px;height:6px;border-radius:50%;background:var(--amber);box-shadow:0 0 10px var(--amber)}
 
-  .main{flex:1 1 auto;display:flex;align-items:center;min-height:0}
+  .main{position:relative;z-index:2;flex:1 1 auto;display:flex;align-items:center;min-height:0}
   .intro{max-width:min(520px,46vw)}
 
   .eyebrow{display:inline-flex;align-items:center;gap:.6em;font-family:'Space Grotesk';font-size:.78rem;
@@ -223,7 +223,7 @@
   .engine .sep{color:var(--amber)}
   .engine .tail{color:var(--muted);font-weight:400}
 
-  .foot{flex:0 0 auto;display:flex;align-items:center;justify-content:flex-start;gap:20px;flex-wrap:wrap;
+  .foot{position:relative;z-index:2;flex:0 0 auto;display:flex;align-items:center;justify-content:flex-start;gap:20px;flex-wrap:wrap;
     padding-top:clamp(14px,2vh,20px);border-top:1px solid var(--line);margin-top:clamp(12px,1.8vh,18px)}
   .foot .items{display:flex;gap:clamp(16px,2.2vw,32px);flex-wrap:wrap}
   .foot .item{display:flex;align-items:center;gap:.6em;font-size:.82rem;color:var(--muted)}
@@ -251,12 +251,35 @@
   @keyframes waPulse{0%{transform:scale(.82);opacity:.55}100%{transform:scale(1.28);opacity:0}}
   @media (prefers-reduced-motion:reduce){.wa .bubble::after,.stars2{animation:none}}
 
-  @media (max-width:1000px){
-    body{overflow:auto;height:auto;min-height:100vh}
-    .hero-x{position:absolute;right:50%;transform:translateX(50%);bottom:auto;top:6vh;height:38vh;opacity:.9}
-    .main{padding-top:44vh}
+  /* ---------- tablet / mobile: clean vertical stack ---------- */
+  @media (max-width:900px){
+    body{overflow-x:hidden;overflow-y:auto;height:auto;min-height:100vh}
+    .earth,.vignette{display:none}
+    body::after{content:"";position:absolute;left:0;right:0;bottom:0;height:210px;z-index:0;pointer-events:none;
+      background:radial-gradient(130% 90% at 50% 150%, rgba(100,194,238,.30), transparent 72%)}
+    .shell{height:auto;min-height:100vh;min-height:100dvh;padding:20px 22px 30px}
+    .top{align-items:center}
+    .brand{font-size:1.3rem}
+    .badge{font-size:.66rem;white-space:nowrap}
+    .hero-x{position:static;display:block;right:auto;bottom:auto;transform:none;opacity:1;
+      width:min(84%,340px);height:auto;margin:14px auto 2px;
+      filter:drop-shadow(0 22px 30px rgba(0,0,0,.55))}
+    .main{display:block;flex:0 0 auto;padding:0}
     .intro{max-width:100%}
-    .earth{top:74vh}
+    .eyebrow{margin-bottom:12px}
+    h1{font-size:clamp(2.1rem,8.5vw,3rem)}
+    .lede{max-width:100%;font-size:1rem}
+    .cta-row{margin-bottom:22px}
+    .btn.primary{width:100%;justify-content:center}
+    .foot{margin-top:auto;padding-bottom:74px;justify-content:flex-start}
+    .foot .items{gap:12px 18px}
+    .wa{right:16px;bottom:16px}
+    .wa .label{display:none}
+  }
+
+  @media (max-width:360px){
+    .badge{display:none}
+    h1{font-size:2rem}
   }
 </style>
 </head>
@@ -266,13 +289,14 @@
   <div class="stars2"></div>
   <div class="earth"></div>
   <div class="vignette"></div>
-  <img class="hero-x" src="assets/hero-x.png" alt="The lean.x digital crew — four astronauts around the brand X" />
 
   <div class="shell">
     <header class="top">
       <a class="brand" href="/" aria-label="lean.x digital home">lean<span class="x">.x</span><span class="digital">digital</span></a>
       <div class="badge"><span class="dot"></span>Digital Marketing Agency</div>
     </header>
+
+    <img class="hero-x" src="assets/hero-x.png" alt="The lean.x digital crew — four astronauts around the brand X" />
 
     <main class="main">
       <div class="intro">
