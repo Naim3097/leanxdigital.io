@@ -1,0 +1,16 @@
+{
+  "name": "lean.x digital",
+  "short_name": "lean.x",
+  "description": "A Kuala Lumpur digital marketing agency that turns traffic into sales.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#041320",
+  "theme_color": "#041320",
+  "lang": "en",
+  "icons": [
+    { "src": "/favicon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/favicon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}
