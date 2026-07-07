@@ -12,6 +12,10 @@ Thumbs.db
 node_modules/
 .next/
 
-# Source design assets kept locally but not shipped to the web repo
+# Source design assets kept locally but not shipped to the web repo.
+# Whitelist the assets that are actually referenced by the live site.
 assets/*
 !assets/hero-x.png
+!assets/hero-bg.mp4
+!assets/hero-bg-poster.jpg
+!assets/logo.svg
