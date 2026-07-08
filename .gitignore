@@ -19,3 +19,8 @@ assets/*
 !assets/hero-bg.mp4
 !assets/hero-bg-poster.jpg
 !assets/logo.svg
+!assets/hero-desktop.mp4
+!assets/hero-desktop-poster.jpg
+!assets/hero-mobile.png
+!assets/logo-white.svg
+!assets/logo-desktop-white.svg
