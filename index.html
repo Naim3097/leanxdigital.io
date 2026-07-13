@@ -503,5 +503,21 @@
     document.addEventListener('click',function(e){ if(connect.classList.contains('open') && !connect.contains(e.target)) close(); });
   })();
   </script>
+
+  <script>
+  /* GA4: track Download Company Profile clicks */
+  (function(){
+    var btn=document.querySelector('.btn.primary');
+    if(!btn) return;
+    btn.addEventListener('click',function(){
+      if(typeof gtag==='function'){
+        gtag('event','download_company_profile',{
+          file_name:'LEANX-DIGITAL-Company-Profile.pdf',
+          link_text:'Download Company Profile'
+        });
+      }
+    });
+  })();
+  </script>
 </body>
 </html>
